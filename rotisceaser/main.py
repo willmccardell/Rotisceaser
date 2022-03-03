@@ -73,13 +73,11 @@ def char_range(c1, c2):
 def check_cypher_word_percentage(cypher):
     cy_list = cypher.split(' ')
     ret = 0.0
-    flag = 0.0
-    for word in cy_list:
-        if d.check(word):
-            flag += 1.0
-    ret = (flag) / (len(cy_list))
 
+    temp_list = list(map(d.check, cy_list))
+    ret = sum(bool(val) for val in temp_list) / len(temp_list)
     return ret
+
 
 
 def cleanup_original_cypher(cypher):
